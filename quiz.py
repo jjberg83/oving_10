@@ -4,6 +4,9 @@
 Created on Sat Oct 16 03:58:13 2021
 
 @author: jjberg_
+
+Skriv en enhetstest for klassen Sporsmaal, som tester i alle fall metodene 
+sjekk_svar og korrekt_svar_tekst
 """
 
 def read_the_document():
