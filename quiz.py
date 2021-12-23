@@ -46,7 +46,7 @@ class MultipleChoice:
        
     
 if __name__ == '__main__':
-    liste_med_alle_instansene = read_the_document() # Unngår jeg global variabel slik?
+    liste_med_alle_instansene = read_the_document() 
     sum_spiller1 = 0
     sum_spiller2 = 0
     for sporsmaal in liste_med_alle_instansene:
