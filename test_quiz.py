@@ -16,8 +16,7 @@ class TestMultipleChoice(unittest.TestCase):
     
     def test_answer_check(self):
         liste_med_alle_instansene = read_the_document()
-        # print(liste_med_alle_instansene[1])
-        # print(liste_med_alle_instansene[1].correct_answer)
+
         # Question 1
         self.assertFalse(liste_med_alle_instansene[0].answer_check(1))
         self.assertFalse(liste_med_alle_instansene[0].answer_check(2))
@@ -31,26 +30,38 @@ class TestMultipleChoice(unittest.TestCase):
         self.assertTrue(liste_med_alle_instansene[1].answer_check(2))
         
         # Question 3
-        self.assertFalse(liste_med_alle_instansene[2].answer_check(1))
-        self.assertTrue(liste_med_alle_instansene[2].answer_check(2))
+        self.assertFalse(liste_med_alle_instansene[2].answer_check(2))
+        self.assertFalse(liste_med_alle_instansene[2].answer_check(3))
+        self.assertFalse(liste_med_alle_instansene[2].answer_check(4))
+        self.assertTrue(liste_med_alle_instansene[2].answer_check(1))
         
-        # Question 4
+        # # Question 4
         self.assertFalse(liste_med_alle_instansene[3].answer_check(1))
-        self.assertTrue(liste_med_alle_instansene[3].answer_check(2))
+        self.assertFalse(liste_med_alle_instansene[3].answer_check(2))
+        self.assertFalse(liste_med_alle_instansene[3].answer_check(4))
+        self.assertTrue(liste_med_alle_instansene[3].answer_check(3))
         
-        # Question 5
+        # # Question 5
         self.assertFalse(liste_med_alle_instansene[4].answer_check(1))
+        self.assertFalse(liste_med_alle_instansene[4].answer_check(3))
+        self.assertFalse(liste_med_alle_instansene[4].answer_check(4))
         self.assertTrue(liste_med_alle_instansene[4].answer_check(2))
         
-        # Question 6
+        # # Question 6
         self.assertFalse(liste_med_alle_instansene[5].answer_check(1))
+        self.assertFalse(liste_med_alle_instansene[5].answer_check(3))
+        self.assertFalse(liste_med_alle_instansene[5].answer_check(4))
+        self.assertFalse(liste_med_alle_instansene[5].answer_check(5))
         self.assertTrue(liste_med_alle_instansene[5].answer_check(2))
         
-        # Question 7
+        # # Question 7
         self.assertFalse(liste_med_alle_instansene[6].answer_check(1))
-        self.assertTrue(liste_med_alle_instansene[6].answer_check(2))
+        self.assertFalse(liste_med_alle_instansene[6].answer_check(2))
+        self.assertFalse(liste_med_alle_instansene[6].answer_check(3))
+        self.assertFalse(liste_med_alle_instansene[6].answer_check(5))
+        self.assertTrue(liste_med_alle_instansene[6].answer_check(4))
         
-        # Question 8
+        # # Question 8
         self.assertFalse(liste_med_alle_instansene[7].answer_check(1))
         self.assertTrue(liste_med_alle_instansene[7].answer_check(2))
         
