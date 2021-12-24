@@ -5,8 +5,6 @@ Created on Thu Dec 23 14:12:04 2021
 
 @author: jjberg
 
-Skriv en enhetstest for klassen Sporsmaal, som tester i alle fall metodene 
-sjekk_svar og korrekt_svar_tekst
 """
 
 import unittest
@@ -35,38 +33,86 @@ class TestMultipleChoice(unittest.TestCase):
         self.assertFalse(liste_med_alle_instansene[2].answer_check(4))
         self.assertTrue(liste_med_alle_instansene[2].answer_check(1))
         
-        # # Question 4
+        # Question 4
         self.assertFalse(liste_med_alle_instansene[3].answer_check(1))
         self.assertFalse(liste_med_alle_instansene[3].answer_check(2))
         self.assertFalse(liste_med_alle_instansene[3].answer_check(4))
         self.assertTrue(liste_med_alle_instansene[3].answer_check(3))
         
-        # # Question 5
+        # Question 5
         self.assertFalse(liste_med_alle_instansene[4].answer_check(1))
         self.assertFalse(liste_med_alle_instansene[4].answer_check(3))
         self.assertFalse(liste_med_alle_instansene[4].answer_check(4))
         self.assertTrue(liste_med_alle_instansene[4].answer_check(2))
         
-        # # Question 6
+        # Question 6
         self.assertFalse(liste_med_alle_instansene[5].answer_check(1))
         self.assertFalse(liste_med_alle_instansene[5].answer_check(3))
         self.assertFalse(liste_med_alle_instansene[5].answer_check(4))
         self.assertFalse(liste_med_alle_instansene[5].answer_check(5))
         self.assertTrue(liste_med_alle_instansene[5].answer_check(2))
         
-        # # Question 7
+        # Question 7
         self.assertFalse(liste_med_alle_instansene[6].answer_check(1))
         self.assertFalse(liste_med_alle_instansene[6].answer_check(2))
         self.assertFalse(liste_med_alle_instansene[6].answer_check(3))
         self.assertFalse(liste_med_alle_instansene[6].answer_check(5))
         self.assertTrue(liste_med_alle_instansene[6].answer_check(4))
         
-        # # Question 8
+        # Question 8
         self.assertFalse(liste_med_alle_instansene[7].answer_check(1))
         self.assertTrue(liste_med_alle_instansene[7].answer_check(2))
         
-    # def test_korrekt_svar_tekst(self):
-    #     return True
+    def test_korrekt_svar_tekst(self):
+        liste_med_alle_instansene = read_the_document()
+        
+        # Question 1
+        self.assertFalse(liste_med_alle_instansene[0].korrekt_svar_tekst()=='RAM')
+        self.assertFalse(liste_med_alle_instansene[0].korrekt_svar_tekst()=='Harddisk')
+        self.assertFalse(liste_med_alle_instansene[0].korrekt_svar_tekst()=='Sekundærlager')
+        self.assertTrue(liste_med_alle_instansene[0].korrekt_svar_tekst()=='CPU')
+        
+        # Question 2
+        self.assertFalse(liste_med_alle_instansene[1].korrekt_svar_tekst()=='bit')
+        self.assertFalse(liste_med_alle_instansene[1].korrekt_svar_tekst()=='bryter')
+        self.assertFalse(liste_med_alle_instansene[1].korrekt_svar_tekst()=='transistor')
+        self.assertTrue(liste_med_alle_instansene[1].korrekt_svar_tekst()=='byte')
+        
+        # Question 3
+        self.assertFalse(liste_med_alle_instansene[2].korrekt_svar_tekst()=='instruksjoner')
+        self.assertFalse(liste_med_alle_instansene[2].korrekt_svar_tekst()=='variabler')
+        self.assertFalse(liste_med_alle_instansene[2].korrekt_svar_tekst()=='CPU-er')
+        self.assertTrue(liste_med_alle_instansene[2].korrekt_svar_tekst()=='bits')
+        
+        # Question 4 
+        self.assertFalse(liste_med_alle_instansene[3].korrekt_svar_tekst()=='heksadesimal')
+        self.assertFalse(liste_med_alle_instansene[3].korrekt_svar_tekst()=='oktal')
+        self.assertFalse(liste_med_alle_instansene[3].korrekt_svar_tekst()=='desimal')
+        self.assertTrue(liste_med_alle_instansene[3].korrekt_svar_tekst()=='binær')
+                
+        # Question 5 
+        self.assertFalse(liste_med_alle_instansene[4].korrekt_svar_tekst()=='38')
+        self.assertFalse(liste_med_alle_instansene[4].korrekt_svar_tekst()=='173')
+        self.assertFalse(liste_med_alle_instansene[4].korrekt_svar_tekst()=='1011001')
+        self.assertTrue(liste_med_alle_instansene[4].korrekt_svar_tekst()=='89')
+        
+        # Question 6 
+        self.assertFalse(liste_med_alle_instansene[5].korrekt_svar_tekst()=='1011')
+        self.assertFalse(liste_med_alle_instansene[5].korrekt_svar_tekst()=='11011')
+        self.assertFalse(liste_med_alle_instansene[5].korrekt_svar_tekst()=='101111')
+        self.assertFalse(liste_med_alle_instansene[5].korrekt_svar_tekst()=='111011')
+        self.assertTrue(liste_med_alle_instansene[5].korrekt_svar_tekst()=='10111')
+        
+        # Question 7 
+        self.assertFalse(liste_med_alle_instansene[6].korrekt_svar_tekst()=='assembly')
+        self.assertFalse(liste_med_alle_instansene[6].korrekt_svar_tekst()=='c')
+        self.assertFalse(liste_med_alle_instansene[6].korrekt_svar_tekst()=='java')
+        self.assertFalse(liste_med_alle_instansene[6].korrekt_svar_tekst()=='python')
+        self.assertTrue(liste_med_alle_instansene[6].korrekt_svar_tekst()=='maskinkode')
+        
+        # Question 8 
+        self.assertFalse(liste_med_alle_instansene[7].korrekt_svar_tekst()=='kompilert')
+        self.assertTrue(liste_med_alle_instansene[7].korrekt_svar_tekst()=='tolket')
     
 if __name__ == '__main__':
     unittest.main()
