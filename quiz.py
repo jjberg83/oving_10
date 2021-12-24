@@ -5,8 +5,13 @@ Created on Sat Oct 16 03:58:13 2021
 
 @author: jjberg_
 
-Skriv en enhetstest for klassen Sporsmaal, som tester i alle fall metodene 
-sjekk_svar og korrekt_svar_tekst
+c) Lag en klasse Spiller, som har egenskapene navn og poengsum. Poengsum skal ha 0 som
+default verdi.
+
+d) Lag en funksjon som lager ei liste med spillere (objekter av klassen Spiller). Funksjonen skal
+spørre brukeren om antall spillere. Funksjonen skal spørre brukeren om navn til hver spiller.
+Alle spillerne starter med 0 poeng
+
 """
 
 def read_the_document():
@@ -43,6 +48,12 @@ class MultipleChoice:
     
     def __str__(self):
         return f'{self.question}\n' + '\n'.join(f'{indeks} - {element}' for indeks, element in enumerate(self.alternatives,1))+ '\n'
+    
+class Spiller:
+    def __init__(self, navn, poengsum = 0):
+        self.navn = navn
+        self.poengsum = poengsum
+    
        
     
 if __name__ == '__main__':
