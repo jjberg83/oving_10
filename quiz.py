@@ -25,7 +25,24 @@ def read_the_document():
             ny_instans = MultipleChoice(sporsmaal, rett_svar, alternativer)
             question_list.append(ny_instans)
     return question_list
-            
+
+class Spiller:
+    def __init__(self, navn, poengsum = 0):
+        self.navn = navn
+        self.poengsum = poengsum
+
+def players_list():
+    players_list = list()
+    number_players = int(input('Hvor mange spillere er dere?\n'))
+    indeks = 1
+    for spiller in range(number_players):
+        name_player = input(f'Hva er navnet på spiller nummer {indeks}:\n')
+        ny_instans = Spiller(name_player)
+        players_list.append(ny_instans)
+        indeks += 1
+
+    
+players_list()
 
 class MultipleChoice:
     #Constructor
@@ -49,10 +66,7 @@ class MultipleChoice:
     def __str__(self):
         return f'{self.question}\n' + '\n'.join(f'{indeks} - {element}' for indeks, element in enumerate(self.alternatives,1))+ '\n'
     
-class Spiller:
-    def __init__(self, navn, poengsum = 0):
-        self.navn = navn
-        self.poengsum = poengsum
+
     
        
     
