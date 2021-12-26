@@ -5,12 +5,7 @@ Created on Sat Oct 16 03:58:13 2021
 
 @author: jjberg_
 
-c) Lag en klasse Spiller, som har egenskapene navn og poengsum. Poengsum skal ha 0 som
-default verdi.
 
-d) Lag en funksjon som lager ei liste med spillere (objekter av klassen Spiller). Funksjonen skal
-spørre brukeren om antall spillere. Funksjonen skal spørre brukeren om navn til hver spiller.
-Alle spillerne starter med 0 poeng
 
 """
 
@@ -40,9 +35,7 @@ def players_list():
         ny_instans = Spiller(name_player)
         players_list.append(ny_instans)
         indeks += 1
-
-    
-players_list()
+    return players_list
 
 class MultipleChoice:
     #Constructor
@@ -66,36 +59,16 @@ class MultipleChoice:
     def __str__(self):
         return f'{self.question}\n' + '\n'.join(f'{indeks} - {element}' for indeks, element in enumerate(self.alternatives,1))+ '\n'
     
+'''
+Skriv om if __name__ == "__main__" blokken fra øving 9 på følgende vis. Før den starter
+spillet skal den bruke funksjonen fra forrige deloppgave til å lage ei liste med spillere. Etter å
+ha skrevet ut spørsmålet skal den spørre hver spiller med navn om hvilket svaralternativ
+vedkommende tror er korrekt. Deretter skal den skrive ut korrekt svaralternativ. Deretter
+skal den for hver spiller sjekke om spilleren gjettet riktig eller feil, skrive ut dette, og gi hver
+spiller som gjettet riktig ett poeng. Til slutt skal den sjekke hvilken spiller som får flest poeng,
+og skrive ut navn og poengsum til denne spilleren. Den obligatoriske delen krever ikke at du
+håndterer uavgjort
 
-    
-       
-    
-if __name__ == '__main__':
-    liste_med_alle_instansene = read_the_document() 
-    sum_spiller1 = 0
-    sum_spiller2 = 0
-    for sporsmaal in liste_med_alle_instansene:
-        print(sporsmaal)
-        svar_spiller1 = int(input("Velg et svaralternativ for spiller 1: "))
-        svar_spiller2 = int(input("Velg et svaralternativ for spiller 2: "))
-        print(f'Korrekt svar: {sporsmaal.korrekt_svar_tekst()}')
-        if sporsmaal.answer_check(svar_spiller1):
-            sum_spiller1 += 1
-            print('Spiller 1: Korrekt')
-        else:
-            print('Spiller 1: Feil')
-        if sporsmaal.answer_check(svar_spiller2):
-            sum_spiller2 += 1
-            print('Spiller 2: Korrekt')
-        else:
-            print('Spiller 2: Feil')
-    print(f'Sum spiller 1: {sum_spiller1}')
-    print(f'Sum spiller 2: {sum_spiller2}')
-        
-        
-        
-        
-"""
 Her er et eksempel på spill, de to første spørsmålene:
     
 Den delen av en datamaskin som kjører programmet kalles? 
@@ -112,20 +85,35 @@ Korrekt svar: CPU
 
 Spiller 1: Feil
 Spiller 2: Korrekt
-"""
-    
-    
-    
-    
-    
-    
-    
-    
-    
 
+'''
     
-
-
-
-
+       
     
+if __name__ == '__main__':
+    liste_med_alle_spillerne = players_list()
+    liste_med_alle_sporsmaalene = read_the_document()
+    poeng = [0] * (len(liste_med_alle_spillerne))
+    for sporsmaal in liste_med_alle_sporsmaalene:
+        avgitte_svar = list()
+        print(sporsmaal)
+        indre_indeks = 0
+        for spillers_svar in liste_med_alle_spillerne:
+            svar = int(input(f'Velg et svaralternativ for {spillers_svar.navn}: '))
+            avgitte_svar.append(svar)
+            if svar - 1 == sporsmaal.correct_answer:
+                poeng[indre_indeks] += 1
+            indre_indeks += 1
+        print(poeng)
+        print(f'\nKorrekt svar: {sporsmaal.korrekt_svar_tekst()}\n')
+            
+        
+        
+            
+            
+            
+            
+            
+            
+            
+            
