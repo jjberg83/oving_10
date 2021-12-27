@@ -60,14 +60,6 @@ class MultipleChoice:
         return f'{self.question}\n' + '\n'.join(f'{indeks} - {element}' for indeks, element in enumerate(self.alternatives,1))+ '\n'
     
 '''
-Skriv om if __name__ == "__main__" blokken fra øving 9 på følgende vis. Før den starter
-spillet skal den bruke funksjonen fra forrige deloppgave til å lage ei liste med spillere. Etter å
-ha skrevet ut spørsmålet skal den spørre hver spiller med navn om hvilket svaralternativ
-vedkommende tror er korrekt. Deretter skal den skrive ut korrekt svaralternativ. Deretter
-skal den for hver spiller sjekke om spilleren gjettet riktig eller feil, skrive ut dette, og gi hver
-spiller som gjettet riktig ett poeng. Til slutt skal den sjekke hvilken spiller som får flest poeng,
-og skrive ut navn og poengsum til denne spilleren. Den obligatoriske delen krever ikke at du
-håndterer uavgjort
 
 Her er et eksempel på spill, de to første spørsmålene:
     
@@ -96,7 +88,7 @@ if __name__ == '__main__':
     poeng = [0] * (len(liste_med_alle_spillerne))
     for sporsmaal in liste_med_alle_sporsmaalene:
         avgitte_svar = list()
-        print(sporsmaal)
+        print(f'\n{sporsmaal}')
         indre_indeks = 0
         for spillers_svar in liste_med_alle_spillerne:
             svar = int(input(f'Velg et svaralternativ for {spillers_svar.navn}: '))
@@ -104,9 +96,17 @@ if __name__ == '__main__':
             if svar - 1 == sporsmaal.correct_answer:
                 poeng[indre_indeks] += 1
             indre_indeks += 1
-        print(poeng)
         print(f'\nKorrekt svar: {sporsmaal.korrekt_svar_tekst()}\n')
-            
+        for indeks in range(len(liste_med_alle_spillerne)):
+            if avgitte_svar[indeks]-1 == sporsmaal.correct_answer:
+                print(f'{liste_med_alle_spillerne[indeks].navn}: Korrekt')
+            else:
+                print(f'{liste_med_alle_spillerne[indeks].navn}: Feil')
+    vinner_poeng = max(poeng)
+    vinner_spiller = liste_med_alle_spillerne[poeng.index(vinner_poeng)].navn
+    print(f'\n{vinner_spiller} vant med {vinner_poeng} poeng!')
+    
+
         
         
             
